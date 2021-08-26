@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import GifGrid from "./components/GifGrid";
+import AddCategories from "./components/AddCategories";
 
 function App() {
+
+  const [categories, setCategories] = useState(['One Piece'])
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h2>App Gif</h2>
+      <AddCategories setCategories={setCategories} />
+      <div>
+          {
+            categories.map( i => (
+              <GifGrid 
+                key={i}
+                category={i}
+              />
+            ))
+          }
+
+      </div>
+    </>
   );
 }
 
